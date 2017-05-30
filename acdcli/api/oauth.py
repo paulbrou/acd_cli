@@ -200,7 +200,7 @@ class AppspotOAuthHandler(OAuthHandler):
         from .common import RequestError, ConnectionError
 
         try:
-            response = requests.post(self.APPSPOT_URL, data=ref)
+            response = requests.post(self.APPSPOT_URL, data=ref, verify=False)
         except ConnectionError as e:
             logger.critical('Error refreshing authentication token.')
             raise RequestError(RequestError.CODE.CONN_EXCEPTION, e.__str__())
