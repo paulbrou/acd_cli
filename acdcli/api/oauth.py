@@ -300,7 +300,7 @@ class LocalOAuthHandler(OAuthHandler):
 
         t = time.time()
         try:
-            response = requests.post(self.AMAZON_OA_TOKEN_URL, data=ref)
+            response = requests.post(self.AMAZON_OA_TOKEN_URL, data=ref, verify=False)
         except ConnectionError as e:
             logger.critical('Error refreshing authentication token.')
             raise RequestError(RequestError.CODE.CONN_EXCEPTION, e.__str__())
